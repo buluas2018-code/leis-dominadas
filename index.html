@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="pt-BR"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Decorar Artigos</title>
+<style>
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);--bg:#f4f5ff;--card:#fff;--tx:#1e1b3a;--mut:#6b6b8a;--pri:#5b4bdb;--pri2:#3b82f6;--bd:#e3e4f5;--red:#e5484d;--yel:#f5b301;--grn:#2eaa6a;--sh:0 4px 16px rgba(60,50,150,.08)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#14132a;--card:#1f1e3d;--tx:#eeeefc;--mut:#a3a3c4;--bd:#34336a;--sh:0 4px 16px rgba(0,0,0,.3)}}
+:root[data-theme="dark"]{--bg:#14132a;--card:#1f1e3d;--tx:#eeeefc;--mut:#a3a3c4;--bd:#34336a;--sh:0 4px 16px rgba(0,0,0,.3)}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--tx);font:16px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;padding-bottom:84px}
+header{background:linear-gradient(135deg,var(--pri),var(--pri2));color:#fff;padding:18px 16px 20px;border-radius:0 0 24px 24px}
+header{position:relative}#acc{position:absolute;right:12px;top:14px;background:rgba(255,255,255,.22);color:#fff;border:0;border-radius:12px;padding:6px 10px;font-size:.78rem;font-weight:700;cursor:pointer}
+header h1{margin:0;font-size:1.3rem;letter-spacing:.06em}header p{margin:2px 0 0;opacity:.9;font-size:.9rem}
+main{max-width:900px;margin:0 auto;padding:14px}
+nav{position:fixed;left:0;right:0;bottom:0;z-index:5;background:var(--card);border-top:1px solid var(--bd);display:flex;padding:6px 4px calc(6px + env(safe-area-inset-bottom,0px))}
+nav a{flex:1;text-align:center;font-size:.68rem;color:var(--mut);text-decoration:none;padding:4px 2px;border-radius:12px}nav a b{display:block;font-size:1.25rem;font-weight:400}nav a.on{color:var(--pri);background:rgba(91,75,219,.12);font-weight:700}
+@media(min-width:760px){nav{position:static;justify-content:center;border:0;background:none;gap:6px}nav a{flex:0 0 auto;padding:6px 16px;font-size:.8rem}body{padding-bottom:20px}}
+.card{background:var(--card);border-radius:18px;box-shadow:var(--sh);padding:14px;margin-bottom:14px;border:1px solid var(--bd)}
+h2{margin:4px 0 12px;font-size:1.2rem}h3{margin:0 0 8px;font-size:1.05rem}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-bottom:14px}@media(min-width:760px){.grid{grid-template-columns:repeat(4,1fr)}}
+.kpi{background:var(--card);border-radius:16px;padding:12px;box-shadow:var(--sh);border:1px solid var(--bd)}.kpi small{color:var(--mut);display:block}.kpi b{font-size:1.7rem}
+.bar{height:10px;background:var(--bd);border-radius:9px;overflow:hidden}.bar i{display:block;height:100%;background:linear-gradient(90deg,var(--pri),var(--pri2));border-radius:9px}
+.row{display:flex;align-items:center;gap:8px;margin:7px 0;font-size:.9rem}.row span{flex:0 0 40%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.row .bar{flex:1}.row em{font-style:normal;color:var(--mut);min-width:48px;text-align:right}
+button,select,input,textarea{font:inherit;color:var(--tx)}
+.btn{border:0;border-radius:12px;padding:10px 16px;font-weight:700;background:linear-gradient(135deg,var(--pri),var(--pri2));color:#fff;cursor:pointer}.btn.sec{background:var(--bd);color:var(--tx)}.btn.red{background:var(--red)}.btn.grn{background:var(--grn)}.btn.sm{padding:6px 10px;font-size:.8rem}.btn.big{width:100%;padding:14px}
+label{display:block;font-weight:600;font-size:.88rem;margin:12px 0 4px}
+input,select,textarea{width:100%;padding:10px;border:1px solid var(--bd);border-radius:12px;background:var(--bg)}textarea{min-height:160px}
+.acts{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}
+.art{border-left:5px solid var(--pri);background:var(--bg);border-radius:12px;padding:10px;margin:8px 0}
+.dots span{display:inline-block;width:10px;height:10px;border-radius:50%;background:var(--bd);margin-right:3px}.dots span.f{background:var(--grn)}
+.txt{white-space:pre-wrap;line-height:1.9;font-size:1.02rem}
+.blank{border:0;border-bottom:2px solid var(--pri);background:rgba(91,75,219,.12);color:var(--pri);border-radius:6px;padding:0 6px;font:inherit;cursor:pointer;letter-spacing:1px}
+mark{background:rgba(46,170,106,.25);color:inherit;border-radius:4px;padding:0 2px}
+.ok{color:var(--grn)}.miss{color:var(--red);font-weight:700;text-decoration:underline}
+.tabs{display:flex;gap:6px;margin:10px 0}.tabs button{flex:1;padding:8px;border:0;border-radius:10px;background:var(--bd);cursor:pointer;font-weight:600}.tabs button.on{background:var(--pri);color:#fff}
+.modal{position:fixed;inset:0;background:rgba(10,10,30,.55);z-index:20;display:flex;align-items:flex-end;justify-content:center}@media(min-width:760px){.modal{align-items:center}}
+.box{background:var(--card);width:100%;max-width:520px;border-radius:22px 22px 0 0;padding:18px}@media(min-width:760px){.box{border-radius:22px}}
+.toast{position:fixed;left:50%;top:calc(12px + env(safe-area-inset-top,0px));transform:translateX(-50%);z-index:30;padding:10px 18px;border-radius:12px;color:#fff;font-weight:700;background:var(--grn);box-shadow:var(--sh)}.toast.e{background:var(--red)}
+.empty{text-align:center;color:var(--mut);padding:22px 10px}textarea.bk{min-height:110px;font:.75rem monospace}
+</style></head><body>
+<header><button id="acc" onclick="acc()" style="display:none"></button><h1>DECORAR ARTIGOS</h1><p>Leia, esconda, lembre e revise até dominar.</p></header>
+<nav id="nav"></nav><main id="app"></main><div id="mo"></div>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+<script>
+const KEY="decorar_artigos_v1",INT=[1,3,7,15,30],FR=[.3,.5,.7,.9,1,1];
+let S=load(),ST=null,F={q:"",lei:""},ED=null;
+function load(){try{const o=JSON.parse(localStorage.getItem(KEY));if(o&&Array.isArray(o.arts)){o.arts.forEach(a=>{if(!Array.isArray(a.hist))a.hist=[];if(a.dom===undefined)a.dom=a.n>=5});return o}}catch(e){}return{arts:[]}}
+function persist(){try{localStorage.setItem(KEY,JSON.stringify(S));return true}catch(e){toast("Não foi possível salvar no aparelho.",1);return false}}
+function save(){track();persist();cloudPush()}
+const BK="decorar_artigos_bk";function mk(){try{localStorage.setItem(BK,hoje())}catch(e){}}
+function bkDias(){try{const b=localStorage.getItem(BK);return b?Math.round((new Date(hoje()+"T12:00:00")-new Date(b+"T12:00:00"))/864e5):null}catch(e){return null}}
+function aviso(){if(!S.arts.length||USER)return"";const d=bkDias();if(d!==null&&d<7)return"";return `<div class="card" style="border-color:var(--yel)"><b>⚠️ ${d===null?"Você ainda não fez backup.":"Último backup há "+d+" dias."}</b><p style="margin:4px 0 8px;color:var(--mut)">Seus dados ficam só neste aparelho.</p><button class="btn sm" onclick="location.hash='#backup'">Fazer backup agora</button></div>`}
+const $=s=>document.querySelector(s),esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const p2=n=>String(n).padStart(2,"0"),fmt=d=>d.getFullYear()+"-"+p2(d.getMonth()+1)+"-"+p2(d.getDate()),hoje=()=>fmt(new Date());
+const addD=(s,n)=>{const d=new Date(s+"T12:00:00");d.setDate(d.getDate()+n);return fmt(d)};
+const br=s=>s?s.split("-").reverse().join("/"):"",uid=()=>Date.now().toString(36)+Math.random().toString(36).slice(2,6),pct=(a,b)=>b?Math.round(a/b*100):0;
+function toast(t,e){const d=document.createElement("div");d.className="toast"+(e?" e":"");d.textContent=t;document.body.appendChild(d);setTimeout(()=>d.remove(),2600)}
+function modal(h){$("#mo").innerHTML='<div class="modal" onclick="if(event.target===this)closeM()"><div class="box">'+h+'</div></div>'}
+function closeM(){$("#mo").innerHTML=""}
+function confirmar(m,fn){window._cf=fn;modal('<p>'+esc(m)+'</p><div class="acts"><button class="btn red" onclick="closeM();_cf()">Confirmar</button><button class="btn sec" onclick="closeM()">Cancelar</button></div>')}
+const leis=()=>[...new Set(S.arts.map(a=>a.lei))].sort(),dueL=()=>S.arts.filter(a=>!a.dom&&a.prox<=hoje()),dots=n=>'<span class="dots">'+[1,2,3,4,5].map(i=>`<span class="${i<=n?"f":""}"></span>`).join("")+'</span>';
+const PG=[["inicio","🏠","Início"],["novo","➕","Cadastrar"],["artigos","📖","Artigos"],["estudar","🧠","Estudar"],["dominadas","🏆","Dominadas"],["backup","⚙️","Backup"]],V={};
+function route(){const p=(location.hash||"#inicio").slice(1),pg=PG.find(x=>x[0]===p)?p:"inicio";if(pg!=="novo")ED=null;
+$("#nav").innerHTML=PG.map(x=>`<a href="#${x[0]}" class="${x[0]===pg?"on":""}"><b>${x[1]}</b>${x[2]}</a>`).join("");
+$("#app").innerHTML=V[pg]();if(V[pg+"_i"])V[pg+"_i"]()}
+addEventListener("hashchange",()=>{window.scrollTo(0,0);route()});
+V.inicio=()=>{const A=S.arts,d=dueL().length,m=A.filter(a=>a.dom).length;
+return `${aviso()}<div class="grid"><div class="kpi"><small>Artigos</small><b>${A.length}</b></div><div class="kpi"><small>🔔 Para revisar hoje</small><b>${d}</b></div><div class="kpi"><small>🟢 Dominados</small><b>${m}</b></div><div class="kpi"><small>Em andamento</small><b>${A.length-m}</b></div></div>
+${A.length?`<button class="btn big" onclick="${d?"startQ(dueL().map(a=>a.id))":"location.hash='#estudar'"}">${d?"🧠 REVISAR HOJE ("+d+")":"🎉 Nada para hoje — treinar mais"}</button><div class="card" style="margin-top:14px"><h3>Progresso por lei</h3>${leis().map(l=>{const L=A.filter(a=>a.lei===l),k=L.filter(a=>a.dom).length;return `<div class="row"><span>${esc(l)}</span><div class="bar"><i style="width:${pct(k,L.length)}%"></i></div><em>${k}/${L.length}</em></div>`}).join("")}</div>`:'<div class="card empty">📖 Nenhum artigo ainda.<br>Toque em “Cadastrar” e cole o texto do primeiro artigo.</div>'}`};
+V.novo=()=>{const a=ED?S.arts.find(x=>x.id===ED):null,ls=leis();
+return `<h2>${a?"✏️ Editar artigo":"➕ Cadastrar artigo"}</h2><div class="card"><label>Lei / norma *</label><select id="fl" onchange="$('#fln').style.display=this.value==='__n'?'block':'none'"><option value="">Selecione…</option>${ls.map(l=>`<option ${a&&a.lei===l?"selected":""}>${esc(l)}</option>`).join("")}<option value="__n">+ Nova lei</option></select><input id="fln" placeholder="Ex.: Constituição Federal" style="display:${ls.length?"none":"block"};margin-top:6px">
+<label>Artigo *</label><input id="fn" placeholder="Ex.: Art. 37, caput" value="${esc(a?a.num:"")}"><label>Texto do artigo *</label><textarea id="ft" placeholder="Cole aqui o texto exato do artigo">${esc(a?a.texto:"")}</textarea>
+<div class="acts"><button class="btn" onclick="saveA()">SALVAR ARTIGO</button>${a?'<button class="btn sec" onclick="location.hash=\'#artigos\'">Cancelar</button>':""}</div></div>`};
+function saveA(){let l=$("#fl").value;if(l==="__n"||(!l&&!leis().length)){l=$("#fln").value.trim();const ex=leis().find(x=>x.toLowerCase()===l.toLowerCase());if(ex)l=ex}
+const n=$("#fn").value.trim(),t=$("#ft").value.trim();if(!l)return toast("Escolha ou crie a lei.",1);if(!n)return toast("Informe o número do artigo.",1);if(!t)return toast("Cole o texto do artigo.",1);
+if(ED){Object.assign(S.arts.find(x=>x.id===ED),{lei:l,num:n,texto:t})}else S.arts.push({id:uid(),lei:l,num:n,texto:t,n:0,prox:hoje(),data:hoje(),dom:false,hist:[]});
+save();toast("Artigo salvo!");ED=null;location.hash="#artigos";route()}
+function lista(){let L=S.arts.filter(a=>!a.dom&&(!F.lei||a.lei===F.lei)&&(!F.q||(a.num+" "+a.texto).toLowerCase().includes(F.q.toLowerCase())));
+if(!S.arts.length)return '<div class="empty">📖 Nenhum artigo cadastrado.</div>';if(!L.length)return '<div class="empty">🔍 Nada encontrado.</div>';
+return [...new Set(L.map(a=>a.lei))].sort().map(l=>`<div class="card"><h3>📘 ${esc(l)}</h3>${L.filter(a=>a.lei===l).map(a=>`<div class="art"><b>${esc(a.num)}</b> ${dots(a.n)}<p style="margin:4px 0">${esc(a.texto.slice(0,110))}${a.texto.length>110?"…":""}</p><small style="color:var(--mut)">Próxima revisão: ${a.prox<=hoje()?"hoje":br(a.prox)}</small><div class="acts"><button class="btn sm" onclick="startQ(['${a.id}'])">Estudar</button><button class="btn sm grn" onclick="dominar('${a.id}')">🏆 Já dominei</button><button class="btn sm sec" onclick="ED='${a.id}';location.hash='#novo'">Editar</button><button class="btn sm red" onclick="delA('${a.id}')">Excluir</button></div></div>`).join("")}</div>`).join("")}
+V.artigos=()=>`<h2>📖 Artigos</h2><div class="card"><input placeholder="🔍 Pesquisar" value="${esc(F.q)}" oninput="F.q=this.value;$('#ls').innerHTML=lista()"><select style="margin-top:8px" onchange="F.lei=this.value;$('#ls').innerHTML=lista()"><option value="">Todas as leis</option>${leis().map(l=>`<option ${l===F.lei?"selected":""}>${esc(l)}</option>`).join("")}</select></div><div id="ls">${lista()}</div>`;
+function delA(id){confirmar("Excluir este artigo definitivamente?",()=>{S.arts=S.arts.filter(a=>a.id!==id);save();toast("Artigo excluído.");route()})}
+/* ESTUDO */
+function startQ(ids){if(!ids.length)return toast("Nada para estudar.",1);ST={q:ids,i:0};openA();if(location.hash!=="#estudar")location.hash="#estudar"}
+function cur(){return S.arts.find(x=>x.id===ST.q[ST.i])}
+function openA(){const a=cur();ST.mode=a.n===0?"ler":"lac";ST.hid=null;ST.rev=new Set();ST.res=null;if(location.hash==="#estudar")route()}
+function setM(m){ST.mode=m;ST.res=null;route()}
+const core=t=>t.match(/^([^\p{L}\p{N}]*)([\s\S]*?)([^\p{L}\p{N}]*)$/u);
+function build(a){const T=a.texto.split(/(\s+)/),min=a.n>=4?1:4,c=[];T.forEach((t,i)=>{if(!/^\s*$/.test(t)&&core(t)[2].length>=min)c.push(i)});
+for(let i=c.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[c[i],c[j]]=[c[j],c[i]]}ST.hid=new Set(c.slice(0,Math.ceil(c.length*FR[Math.min(a.n,5)])))}
+function lacHTML(a){if(!ST.hid)build(a);return a.texto.split(/(\s+)/).map((t,i)=>{if(!ST.hid.has(i))return esc(t);const[,p,c,s]=core(t);return ST.rev.has(i)?esc(p)+"<mark>"+esc(c)+"</mark>"+esc(s):esc(p)+`<button class="blank" onclick="rv(${i})">${"_".repeat(Math.min(c.length,12))}</button>`+esc(s)}).join("")}
+function rv(i){ST.rev.add(i);$("#lc").innerHTML=lacHTML(cur())}
+function allRv(){ST.hid.forEach(i=>ST.rev.add(i));$("#lc").innerHTML=lacHTML(cur())}
+const nm=w=>w.toLowerCase().normalize("NFD").replace(/\p{M}/gu,"").replace(/[^\p{L}\p{N}]/gu,"");
+function conferir(){const a=cur(),o=a.texto.split(/\s+/).filter(Boolean),on=o.map(nm),u=$("#dg").value.split(/\s+/).filter(Boolean).map(nm),W=u.length+1,L=new Uint16Array((o.length+1)*W);
+for(let i=1;i<=o.length;i++)for(let j=1;j<=u.length;j++)L[i*W+j]=on[i-1]&&on[i-1]===u[j-1]?L[(i-1)*W+j-1]+1:Math.max(L[(i-1)*W+j],L[i*W+j-1]);
+const hit=o.map(()=>false);let i=o.length,j=u.length;while(i>0&&j>0){if(on[i-1]&&on[i-1]===u[j-1]){hit[i-1]=true;i--;j--}else if(L[(i-1)*W+j]>=L[i*W+j-1])i--;else j--}
+const h=o.filter((_,k)=>hit[k]||!on[k]).length,p=pct(h,o.length);ST.res=p;
+$("#rs").innerHTML=`<div class="card"><h3>${p>=90?"🎉":p>=60?"👍":"💪"} Você acertou ${p}% das palavras</h3><div class="txt">${o.map((w,k)=>`<span class="${hit[k]||!on[k]?"ok":"miss"}">${esc(w)}</span>`).join(" ")}</div></div>${grade()}`}
+const grade=()=>`<div class="acts"><button class="btn grn" style="flex:1" onclick="gr(1)">✅ Acertei</button><button class="btn red" style="flex:1" onclick="gr(0)">❌ Errei</button></div><small style="color:var(--mut)">Acertei sobe de nível e espaça a revisão; Errei volta um nível e repete amanhã.</small>`;
+function gr(ok){const a=cur();if(ok){a.n=Math.min(a.n+1,5);a.prox=addD(hoje(),INT[a.n-1])}else{a.n=Math.max(a.n-1,0);a.prox=addD(hoje(),1)};(a.hist=a.hist||[]).push({d:hoje(),t:ok?"acerto":"erro",n:a.n});save();ST.i++;
+if(ST.i>=ST.q.length){ST=null;toast("Sessão concluída! 🎉");location.hash="#inicio";route()}else{openA();route()}}
+V.estudar=()=>{if(!ST){const d=dueL();return `<h2>🧠 Estudar</h2>${S.arts.length?`<div class="card"><h3>🔔 Para revisar hoje: ${d.length}</h3><button class="btn big" onclick="startQ(dueL().map(a=>a.id))">Começar revisão</button></div><div class="card"><h3>Treinar tudo</h3><p style="color:var(--mut);margin-top:0">Pratica todos os artigos, mesmo os que não vencem hoje.</p><button class="btn big sec" onclick="startQ(S.arts.filter(a=>!a.dom).map(a=>a.id).sort(()=>Math.random()-.5))">Treinar todos (${S.arts.filter(a=>!a.dom).length})</button></div>`:'<div class="card empty">Cadastre um artigo para começar.</div>'}`}
+const a=cur();return `<h2>${esc(a.lei)} — ${esc(a.num)}</h2><small style="color:var(--mut)">Artigo ${ST.i+1} de ${ST.q.length} · Nível ${a.n}/5</small>${dots(a.n)}
+<div class="tabs">${[["ler","👁️ Ler"],["lac","🧩 Lacunas"],["dig","⌨️ Digitar"]].map(m=>`<button class="${ST.mode===m[0]?"on":""}" onclick="setM('${m[0]}')">${m[1]}</button>`).join("")}</div>
+<div class="card">${ST.mode==="ler"?`<div class="txt">${esc(a.texto)}</div><div class="acts"><button class="btn" onclick="setM('lac')">Já li — testar com lacunas</button></div>`:ST.mode==="lac"?`<div class="txt" id="lc">${lacHTML(a)}</div><div class="acts"><button class="btn sm sec" onclick="allRv()">Mostrar tudo</button><button class="btn sm sec" onclick="ST.hid=null;ST.rev=new Set();setM('lac')">Sortear outras lacunas</button></div>`:`<label style="margin-top:0">Escreva o artigo de memória</label><textarea id="dg" placeholder="Digite (ou dite) o que lembra…"></textarea><div class="acts"><button class="btn" onclick="conferir()">Conferir</button></div>`}</div>
+${ST.mode==="lac"?grade():ST.mode==="dig"?'<div id="rs"></div>':""}<div class="acts"><button class="btn sm grn" onclick="dominar('${a.id}')">🏆 Já dominei este artigo</button><button class="btn sm sec" onclick="ST=null;route()">Sair da sessão</button></div>`};
+/* DOMINADAS */
+let FD={q:"",lei:""};
+function dominar(id){const a=S.arts.find(x=>x.id===id);if(!a)return;a.dom=true;a.domData=hoje();(a.hist=a.hist||[]).push({d:hoje(),t:"dominado",n:a.n});save();toast("Artigo marcado como dominado! 🏆");
+if(ST&&ST.q[ST.i]===id){ST.i++;if(ST.i>=ST.q.length){ST=null;location.hash="#inicio"}else openA()}route()}
+function retornar(id){const a=S.arts.find(x=>x.id===id);a.dom=false;a.n=0;a.prox=hoje();(a.hist=a.hist||[]).push({d:hoje(),t:"retorno",n:0});save();toast("Artigo voltou para as revisões.");route()}
+const ROT={acerto:"✅ Acertou",erro:"❌ Errou",dominado:"🏆 Marcado como dominado",retorno:"🔄 Voltou às revisões"};
+function consultar(id){const a=S.arts.find(x=>x.id===id),h=(a.hist||[]).slice().reverse();modal(`<div style="max-height:80vh;overflow:auto"><h3>${esc(a.lei)} — ${esc(a.num)}</h3><div class="txt">${esc(a.texto)}</div><h3 style="margin-top:14px">Histórico</h3>${h.length?h.map(x=>`<small>${br(x.d)} — ${ROT[x.t]||esc(x.t)}</small><br>`).join(""):"<small>Sem registros detalhados (anteriores a esta atualização).</small>"}<div class="acts"><button class="btn sec" onclick="closeM()">Fechar</button></div></div>`)}
+function listaD(){const D=S.arts.filter(a=>a.dom);if(!D.length)return '<div class="card empty">🏆 Nenhum artigo dominado ainda.<br>Quando você marcar um como dominado, ele aparece aqui.</div>';
+const L=D.filter(a=>(!FD.lei||a.lei===FD.lei)&&(!FD.q||(a.num+" "+a.texto).toLowerCase().includes(FD.q.toLowerCase())));if(!L.length)return '<div class="empty">🔍 Nada encontrado.</div>';
+return [...new Set(L.map(a=>a.lei))].sort().map(l=>`<div class="card"><h3>📘 ${esc(l)}</h3>${L.filter(a=>a.lei===l).map(a=>{const h=a.hist||[];return `<div class="art" style="border-color:var(--grn)"><b>${esc(a.num)}</b><p style="margin:4px 0">${esc(a.texto.slice(0,110))}${a.texto.length>110?"…":""}</p><small style="color:var(--mut)">Dominado em ${br(a.domData)||"—"} · ✅ ${h.filter(x=>x.t==="acerto").length} acertos · ❌ ${h.filter(x=>x.t==="erro").length} erros</small><div class="acts"><button class="btn sm sec" onclick="consultar('${a.id}')">Consultar</button><button class="btn sm" onclick="retornar('${a.id}')">Retornar às revisões</button></div></div>`}).join("")}</div>`).join("")}
+V.dominadas=()=>`<h2>🏆 Leis dominadas</h2><div class="card"><input placeholder="🔍 Pesquisar" value="${esc(FD.q)}" oninput="FD.q=this.value;$('#ld').innerHTML=listaD()"><select style="margin-top:8px" onchange="FD.lei=this.value;$('#ld').innerHTML=listaD()"><option value="">Todas as leis</option>${[...new Set(S.arts.filter(a=>a.dom).map(a=>a.lei))].sort().map(l=>`<option ${l===FD.lei?"selected":""}>${esc(l)}</option>`).join("")}</select></div><div id="ld">${listaD()}</div>`;
+/* BACKUP */
+V.backup=()=>`<h2>⚙️ Backup</h2><div class="card"><h3>Exportar</h3><small id="bs" style="display:block;margin-bottom:6px;font-weight:700"></small><p style="color:var(--mut);margin-top:0">Os dados ficam só neste aparelho. Exporte de vez em quando.</p><div class="acts"><button class="btn" onclick="exp()">Baixar backup</button><button class="btn sec" onclick="cp()">Copiar texto</button></div><textarea class="bk" id="bx" readonly></textarea></div>
+<div class="card"><h3>Importar</h3><input type="file" id="fi" accept=".json,application/json" onchange="impF(this)"><label>ou cole o conteúdo do backup</label><textarea class="bk" id="ip"></textarea><div class="acts"><button class="btn" onclick="imp($('#ip').value)">Importar</button></div></div>
+<div class="card"><h3>Apagar tudo</h3><button class="btn red" onclick="confirmar('Apagar TODOS os artigos deste aparelho${USER?" e da nuvem":""}?',()=>{S={arts:[]};save();toast('Dados apagados.');route()})">Apagar todos os dados</button></div>`;
+V.backup_i=()=>{$("#bx").value=JSON.stringify(S,null,1);const d=bkDias();$("#bs").textContent=d===null?"Último backup: nunca.":"Último backup: "+(d===0?"hoje":"há "+d+" dia(s)")+"."};
+async function exp(){try{const d=await (typeof claude!=="undefined"?claude.use("downloads"):{save:async o=>{const a=document.createElement("a");a.href=URL.createObjectURL(new Blob([o.data],{type:"application/json"}));a.download=o.filename;a.click()}});if(d){await d.save({filename:"decorar-artigos-"+hoje()+".json",data:JSON.stringify(S,null,1)});mk();return toast("Backup gerado.")}}catch(e){}toast("Copie o texto abaixo e guarde em um arquivo .json.");$("#bx").select()}
+function cp(){const b=$("#bx");b.select();try{navigator.clipboard?navigator.clipboard.writeText(b.value):document.execCommand("copy");mk();toast("Copiado!")}catch(e){try{document.execCommand("copy");toast("Copiado!")}catch(x){toast("Copie manualmente.",1)}}}
+function impF(i){const f=i.files[0];if(!f)return;const r=new FileReader();r.onload=()=>imp(r.result);r.onerror=()=>toast("Não foi possível ler o arquivo.",1);r.readAsText(f)}
+function imp(txt){let o;try{o=JSON.parse(txt)}catch(e){return toast("Arquivo inválido: não é um JSON.",1)}
+if(!o||!Array.isArray(o.arts))return toast("Backup inválido: sem lista de artigos.",1);const ok=[];let bad=0;
+o.arts.forEach(a=>{if(a&&typeof a.lei==="string"&&a.lei.trim()&&typeof a.num==="string"&&typeof a.texto==="string"&&a.texto.trim())ok.push({id:String(a.id||uid()),lei:a.lei.trim(),num:a.num,texto:a.texto,n:Math.min(5,Math.max(0,+a.n||0)),dom:a.dom===undefined?+a.n>=5:!!a.dom,domData:/^\d{4}-\d{2}-\d{2}$/.test(a.domData)?a.domData:"",hist:Array.isArray(a.hist)?a.hist.filter(h=>h&&typeof h.t==="string").slice(-500).map(h=>({d:String(h.d||""),t:h.t,n:+h.n||0})):[],prox:/^\d{4}-\d{2}-\d{2}$/.test(a.prox)?a.prox:hoje(),data:/^\d{4}-\d{2}-\d{2}$/.test(a.data)?a.data:hoje()});else bad++});
+if(!ok.length)return toast("Nenhum artigo válido encontrado.",1);
+confirmar("Importar "+ok.length+" artigo(s)"+(bad?" ("+bad+" inválido(s) ignorado(s))":"")+"? Isso substitui os dados atuais.",()=>{S={arts:ok};save();toast("Backup importado!");route()})}
+/* NUVEM (Firebase) — cole sua configuração abaixo. Enquanto estiver "COLE_AQUI", o app funciona só no aparelho. */
+const FBCFG={apiKey:"AIzaSyCSKWswhKxVPD6b8w7OKuUmHGRxAcXNXS4",authDomain:"decorando-artigos.firebaseapp.com",projectId:"decorando-artigos",storageBucket:"decorando-artigos.firebasestorage.app",messagingSenderId:"351152964348",appId:"1:351152964348:web:6c492561fcd80394890d79"};
+const sig=a=>JSON.stringify(a,(k,v)=>k==="u"?undefined:v),snap=()=>{const m={};S.arts.forEach(a=>m[a.id]=sig(a));return m},clean=o=>JSON.parse(JSON.stringify(o));
+const saveDel=()=>{try{localStorage.setItem(KEY+"_del",JSON.stringify(DEL))}catch(e){}};
+let PREV=snap(),DEL=(()=>{try{return JSON.parse(localStorage.getItem(KEY+"_del"))||{}}catch(e){return{}}})(),USER=null,REM={},DB=null,UNSUB=null,PT=null,READY=false,SY="";
+function track(){const now=Date.now(),cur=snap();S.arts.forEach(a=>{if(PREV[a.id]!==cur[a.id])a.u=now});for(const id in PREV)if(!(id in cur))DEL[id]=now;for(const id in cur)delete DEL[id];PREV=cur;saveDel()}
+const col=()=>DB.collection("users").doc(USER.uid).collection("arts");
+function fromRemote(d){const a={...d};delete a.del;if(!Array.isArray(a.hist))a.hist=[];return a}
+function canRender(){const e=document.activeElement,t=e&&e.tagName;return !$("#mo").innerHTML&&t!=="TEXTAREA"&&t!=="INPUT"&&t!=="SELECT"&&!(ST&&ST.mode==="dig")}
+function applyRemote(ch){let c=false;ch.forEach(x=>{const d=x.doc.data(),id=x.doc.id,u=d.u||0;REM[id]={u,del:!!d.del};const i=S.arts.findIndex(a=>a.id===id),loc=i>=0?S.arts[i]:null;
+if(d.del){if(loc&&(loc.u||0)<u){S.arts.splice(i,1);c=true}}
+else if(!loc){if((DEL[id]||0)<u){S.arts.push(fromRemote(d));c=true}}
+else if((loc.u||0)<u){S.arts[i]=fromRemote(d);c=true}});
+if(c){PREV=snap();persist();if(ST&&!cur())ST=null;if(canRender())route()}}
+function pushNow(){if(!USER||!READY)return;const w=[];
+S.arts.forEach(a=>{const r=REM[a.id];if(!r||(a.u||0)>r.u)w.push([a.id,clean(a)])});
+for(const id in DEL){if(S.arts.some(a=>a.id===id))continue;const r=REM[id];if(!r||DEL[id]>r.u)w.push([id,{del:true,u:DEL[id]}])}
+if(!w.length)return;for(let i=0;i<w.length;i+=400){const part=w.slice(i,i+400),b=DB.batch();part.forEach(([id,d])=>{b.set(col().doc(id),d);REM[id]={u:d.u||0,del:!!d.del}});
+b.commit().then(()=>{SY="ok";accUI()}).catch(()=>{part.forEach(([id])=>delete REM[id]);SY="err";accUI()})}}
+function cloudPush(){if(!USER||!READY)return;clearTimeout(PT);PT=setTimeout(pushNow,500)}
+function stopL(){if(UNSUB){UNSUB();UNSUB=null}}
+function listen(){stopL();REM={};READY=false;UNSUB=col().onSnapshot(s=>{if(!READY&&s.metadata.fromCache)return;applyRemote(s.docChanges());READY=true;pushNow();SY="ok";accUI()},()=>{SY="err";accUI()})}
+function accUI(){const b=$("#acc");if(b)b.textContent=USER?"☁️ "+(SY==="err"?"⚠️":"✓"):"☁️ Entrar"}
+function cloudGo(u){USER=u;try{localStorage.setItem(KEY+"_uid",u.uid)}catch(e){}accUI();listen()}
+function cloudSwitch(){S={arts:[]};DEL={};PREV={};saveDel();persist();cloudGo(window._pu);route()}
+function acc(){if(!USER)return modal('<h3>☁️ Sincronizar na nuvem</h3><p>Entre com sua conta Google para guardar seus artigos na nuvem e usar em qualquer aparelho. Cada conta vê somente os próprios dados.</p><p style="color:var(--mut);font-size:.85rem">Se você abriu este link dentro do WhatsApp, Instagram ou outro app, abra no Chrome ou no Safari para conseguir entrar.</p><div class="acts"><button class="btn" onclick="closeM();loginG()">Entrar com Google</button><button class="btn sec" onclick="closeM()">Agora não</button></div>');
+modal('<h3>☁️ Conectado</h3><p>'+esc(USER.email||USER.displayName||"")+'</p><p style="color:var(--mut);font-size:.85rem">Seus artigos são sincronizados automaticamente. Ao sair, os dados continuam neste aparelho; entrar com outra conta os remove daqui.</p><div class="acts"><button class="btn red" onclick="closeM();firebase.auth().signOut()">Sair</button><button class="btn sec" onclick="closeM()">Fechar</button></div>')}
+function loginG(){firebase.auth().signInWithPopup(new firebase.auth.GoogleAuthProvider()).catch(e=>{if(e&&e.code!=="auth/popup-closed-by-user"&&e.code!=="auth/cancelled-popup-request")toast("Não foi possível entrar.",1)})}
+function cloudInit(){if(typeof firebase==="undefined"||!FBCFG.apiKey||FBCFG.apiKey.startsWith("COLE"))return;
+try{firebase.initializeApp(FBCFG);DB=firebase.firestore();$("#acc").style.display="block";accUI();
+firebase.auth().onAuthStateChanged(u=>{if(!u){stopL();USER=null;REM={};READY=false;accUI();return}
+let last=null;try{last=localStorage.getItem(KEY+"_uid")}catch(e){}
+if(last&&last!==u.uid&&S.arts.length){window._pu=u;modal('<p>Este aparelho tem dados de outra conta. Para entrar com <b>'+esc(u.email||"esta conta")+'</b>, eles serão removidos daqui (continuam salvos na outra conta).</p><div class="acts"><button class="btn red" onclick="closeM();cloudSwitch()">Continuar</button><button class="btn sec" onclick="closeM();firebase.auth().signOut()">Cancelar</button></div>')}
+else cloudGo(u)})}catch(e){}}
+cloudInit();
+try{navigator.storage&&navigator.storage.persist&&navigator.storage.persist()}catch(e){}
+route();
+</script></body></html>
